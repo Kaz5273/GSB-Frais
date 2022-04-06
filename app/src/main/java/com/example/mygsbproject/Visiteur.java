@@ -2,15 +2,15 @@ package com.example.mygsbproject;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Visiteur {
+public class Visiteur implements Serializable {
     @SerializedName("id")
     private Integer id;
     @SerializedName("email")
     private String email;
-    @SerializedName("roles")
-    private String roles;
     @SerializedName("vis_nom")
     private String vis_nom;
     @SerializedName("vis_prenom")
@@ -21,12 +21,24 @@ public class Visiteur {
     private String username;
     @SerializedName("password")
     private String password;
+    @SerializedName("vis_Praticiens")
+    private List<String> listpraticiens;
+    private ArrayList<Praticien>lespraticiens;
 
     public Visiteur(String username, String password) {
         this.username = username;
         this.password = password;
-
+        this.email = username;
+        this.initListPraticiens();
     }
+
+    public void initListPraticiens(){
+        lespraticiens = new ArrayList<Praticien>();
+    }
+    public void addPraticiens(Praticien lePraticien){
+        lespraticiens.add(lePraticien);
+    }
+
 
     public Integer getId() {
         return id;
@@ -34,10 +46,6 @@ public class Visiteur {
 
     public String getEmail() {
         return email;
-    }
-
-    public String getRoles() {
-        return roles;
     }
 
     public String getVis_nom() {
@@ -58,5 +66,13 @@ public class Visiteur {
 
     public String getPassword() {
         return password;
+    }
+
+    public List<String> getListpraticiens() {
+        return listpraticiens;
+    }
+
+    public ArrayList<Praticien> getLespraticiens() {
+        return lespraticiens;
     }
 }

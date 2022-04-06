@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mygsbproject.databinding.ActivityMainBinding;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,7 +45,7 @@ private EditText TextPassword;
                             Token token = response.body();
                             Intent intent = new Intent(getApplicationContext(), PraticiensActivity.class);
                             intent.putExtra("token", token.getToken());
-                            intent.putExtra("TextEmail", TextEmail.getText());
+                            intent.putExtra("TextEmail", TextEmail.getText().toString());
                             startActivity(intent);
                            /* TextView textViewTest = findViewById(R.id.textViewTest);
                             textViewTest.setText(token.getToken());

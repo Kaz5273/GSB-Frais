@@ -5,13 +5,22 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface GsbServices {
-    @GET("visiteurs")
+    @GET("/api/visiteurs")
     Call<Visiteurs> getAllVisiteurs(@Header("Authorization") String authorization);
-    @POST("login_check")
+
+    @POST("/api/visiteurs")
+    Call<Visiteur> createVisiteur(@Body Visiteur visiteur);
+
+    @POST("/api/login_check")
     Call<Token> getToken(@Body Visiteur visiteur);
-    @GET("praticiens")
-    Call<Praticiens> getAllPraticiens(@Header("Authorization") String authorization);
+
+    @GET("/api/praticiens")
+    Call<Praticien> getAllPraticiens(@Header("Authorization") String authorization);
+
+    @GET("/api/praticiens/{id}")
+    Call<Praticien> getPraticiens(@Header("Authorization") String authorization, @Path("id") int id);
 
 }
